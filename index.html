@@ -1,0 +1,1074 @@
+<title>Aranżeria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Dancing+Script:wght@600&display=swap">
+
+<style>
+/* ---------- tokeny: motyw jasny (bazowy) ---------- */
+:root{
+  --paper:#EDEAE8;
+  --paper-2:#E3DEDB;
+  --surface:#F6F4F2;
+  --ink:#1B181B;
+  --ink-2:#4A444A;
+  --muted:#776F75;
+  --line:#D6D0CD;
+  --line-2:#C3BBB8;
+  --brass:#A65E43;
+  --brass-2:#C98A6B;
+  --velvet:#57535B;
+  --velvet-1:#6E6A73;
+  --velvet-2:#918D96;
+  --velvet-3:#4C4952;
+  --shadow:0 18px 40px -28px rgba(27,24,27,.55);
+  --r-sm:3px; --r-md:6px;
+  --f-display:"Bodoni Moda","Didot","Times New Roman",serif;
+  --f-body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  --maxw:1180px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#141215;
+    --paper-2:#1C1920;
+    --surface:#1F1C22;
+    --ink:#EFEAE6;
+    --ink-2:#C6BDC2;
+    --muted:#9A9198;
+    --line:#2E2A32;
+    --line-2:#403A44;
+    --brass:#DFA98C;
+    --brass-2:#EFC6B1;
+    --shadow:0 22px 50px -30px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141215;
+  --paper-2:#1C1920;
+  --surface:#1F1C22;
+  --ink:#EFEAE6;
+  --ink-2:#C6BDC2;
+  --muted:#9A9198;
+  --line:#2E2A32;
+  --line-2:#403A44;
+  --brass:#DFA98C;
+  --brass-2:#EFC6B1;
+  --shadow:0 22px 50px -30px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--f-body); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--f-display); font-weight:400; text-wrap:balance; margin:0; letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+img,svg{max-width:100%}
+::selection{background:var(--brass); color:var(--paper)}
+:focus-visible{outline:2px solid var(--brass); outline-offset:3px; border-radius:2px}
+
+.wrap{width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:22px}
+.eyebrow{
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--muted);
+}
+.rule{height:1px; background:var(--line); border:0; margin:0}
+
+/* ---------- kurtyna ---------- */
+.curtain{position:fixed; inset:0; z-index:100; overflow:hidden; cursor:pointer;
+  border:0; padding:0; width:100%; height:100%; background:var(--velvet-3);
+  font:inherit; color:inherit; display:block; text-align:center}
+body.zaslonieta{overflow:hidden}
+.curtain__panel{
+  position:absolute; top:0; bottom:0; width:50.4%;
+  background-color:var(--velvet-1);
+  background-image:
+    linear-gradient(90deg, rgba(0,0,0,.34), rgba(0,0,0,0) 12%, rgba(255,255,255,.05) 46%, rgba(0,0,0,.3)),
+    repeating-linear-gradient(90deg,
+      var(--velvet-3) 0px, var(--velvet-1) 11px, var(--velvet-2) 22px,
+      var(--velvet-1) 33px, var(--velvet-3) 46px, var(--velvet-3) 48px);
+  background-size:100% 100%, 100% 100%;
+  will-change:transform, background-size;
+}
+.curtain__panel--l{left:0; transform-origin:left center}
+.curtain.otwarta .curtain__panel--l{
+  animation:part-l 1.5s cubic-bezier(.72,.02,.24,1) forwards, gather 1.5s cubic-bezier(.72,.02,.24,1) forwards}
+.curtain__panel--r{right:0; transform-origin:right center; background-image:
+    linear-gradient(90deg, rgba(0,0,0,.3), rgba(255,255,255,.05) 54%, rgba(0,0,0,0) 88%, rgba(0,0,0,.34)),
+    repeating-linear-gradient(90deg,
+      var(--velvet-3) 0px, var(--velvet-1) 11px, var(--velvet-2) 22px,
+      var(--velvet-1) 33px, var(--velvet-3) 46px, var(--velvet-3) 48px)}
+.curtain.otwarta .curtain__panel--r{
+  animation:part-r 1.5s cubic-bezier(.72,.02,.24,1) forwards, gather 1.5s cubic-bezier(.72,.02,.24,1) forwards}
+.curtain__rod{position:absolute; top:0; left:0; right:0; height:12px;
+  background:linear-gradient(180deg,#F0C6AF,#C98A6B 30%,#A65E43 62%,#5E3326);
+  box-shadow:0 6px 18px -6px rgba(0,0,0,.6)}
+.curtain.otwarta .curtain__rod{animation:rod-out .5s ease 1.05s forwards}
+.curtain__mark{
+  position:absolute; inset:0; display:grid; place-content:center; justify-items:center;
+  gap:20px; padding:20px;
+}
+.curtain.otwarta .curtain__mark{animation:mark-out .5s ease forwards}
+.curtain__znak{width:clamp(108px,17vw,168px); height:auto; filter:drop-shadow(0 6px 26px rgba(0,0,0,.6))}
+.curtain__znak img,.curtain__znak svg{display:block; width:100%; height:auto; border-radius:50%}
+.curtain__hint{display:flex; align-items:center; gap:12px; color:#E8DFDA;
+  font-family:var(--f-mono); font-size:11.5px; letter-spacing:.26em; text-transform:uppercase;
+  border:1px solid rgba(240,200,178,.45); border-radius:100px; padding:11px 20px;
+  background:rgba(12,10,12,.28); animation:puls 2.6s ease-in-out infinite}
+.curtain:hover .curtain__hint{border-color:#F0C8B2; color:#F0C8B2}
+.curtain__hint span{display:inline-block; width:22px; height:1px; background:currentColor; position:relative}
+.curtain__hint span::before,.curtain__hint span::after{content:""; position:absolute; top:-3px;
+  width:7px; height:7px; border-top:1px solid currentColor; border-right:1px solid currentColor}
+.curtain__hint span::before{left:0; transform:rotate(-135deg)}
+.curtain__hint span::after{right:0; transform:rotate(45deg)}
+@keyframes puls{0%,100%{opacity:.62} 50%{opacity:1}}
+@keyframes part-l{to{transform:translateX(-101%)}}
+@keyframes part-r{to{transform:translateX(101%)}}
+@keyframes gather{60%{background-size:62% 100%, 62% 100%} to{background-size:34% 100%, 34% 100%}}
+@keyframes mark-out{to{opacity:0; transform:scale(1.06)}}
+@keyframes rod-out{to{opacity:0}}
+@keyframes curtain-gone{to{visibility:hidden; display:none}}
+@media (prefers-reduced-motion:reduce){
+  .curtain.otwarta{display:none}
+  .curtain__hint{animation:none; opacity:1}
+}
+
+/* ---------- nagłówek ---------- */
+.top{position:sticky; top:0; z-index:40; background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.top__in{display:flex; align-items:center; gap:22px; height:62px}
+.logo{display:flex; align-items:center; gap:12px; text-decoration:none; white-space:nowrap}
+.logo__mark{display:block; width:40px; height:40px; flex:0 0 40px; border-radius:50%; overflow:hidden}
+.logo__mark img,.logo__mark svg{display:block; width:100%; height:100%; object-fit:cover}
+.logo__txt{font-family:var(--f-display); font-size:18px; letter-spacing:.3em; text-indent:.3em}
+@media (max-width:420px){ .logo__txt{display:none} }
+.nav{display:flex; gap:20px; margin-left:auto; font-size:13.5px}
+.nav a{text-decoration:none; color:var(--ink-2)}
+.nav a:hover{color:var(--brass)}
+.top__tel{font-family:var(--f-mono); font-size:13px; text-decoration:none; color:var(--ink);
+  border:1px solid var(--line-2); padding:7px 12px; border-radius:var(--r-sm); white-space:nowrap}
+.top__tel:hover{border-color:var(--brass); color:var(--brass)}
+@media (max-width:880px){ .nav{display:none} }
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(38px,7vw,74px) clamp(32px,5vw,56px)}
+.hero__grid{display:grid; grid-template-columns:1.12fr .88fr; gap:clamp(24px,4vw,56px); align-items:end}
+.hero h1{font-size:clamp(40px,7.4vw,86px); line-height:.98}
+.hero h1 em{font-style:italic; color:var(--brass)}
+.hero__lead{margin-top:22px; max-width:46ch; color:var(--ink-2); font-size:17px}
+.cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px}
+.btn{display:inline-block; padding:13px 22px; border-radius:var(--r-sm); text-decoration:none;
+  font-size:14px; letter-spacing:.02em; border:1px solid var(--ink); background:var(--ink); color:var(--paper);
+  cursor:pointer; font-family:var(--f-body)}
+.btn:hover{background:var(--brass); border-color:var(--brass); color:#fff}
+.btn--ghost{background:transparent; color:var(--ink); border-color:var(--line-2)}
+.btn--ghost:hover{background:transparent; color:var(--brass); border-color:var(--brass)}
+.hero__facts{display:grid; gap:0; border-top:1px solid var(--line)}
+.fact{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:baseline;
+  padding:13px 0; border-bottom:1px solid var(--line)}
+.fact b{font-family:var(--f-mono); font-weight:500; font-size:15px; color:var(--brass); font-variant-numeric:tabular-nums}
+.fact span{font-size:13.5px; color:var(--muted)}
+@media (max-width:860px){ .hero__grid{grid-template-columns:1fr; align-items:start} }
+
+/* ---------- sekcje ---------- */
+section{scroll-margin-top:76px}
+.sec{padding-block:clamp(46px,6vw,78px)}
+.sec--alt{background:var(--paper-2)}
+.sec__head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  margin-bottom:34px}
+.sec__head h2{font-size:clamp(27px,3.7vw,42px); line-height:1.08}
+.sec__head p{max-width:40ch; color:var(--muted); font-size:14.5px}
+
+/* ---------- katalog ---------- */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(272px,1fr)); gap:1px;
+  background:var(--line); border:1px solid var(--line)}
+.card{background:var(--paper); padding:22px; display:flex; flex-direction:column; gap:14px}
+.card__fig{background:var(--surface); border:1px solid var(--line); aspect-ratio:4/3; display:grid; place-items:center;
+  padding:10px; overflow:hidden}
+.card__fig svg{height:100%; width:auto}
+.card h3{font-size:22px}
+.card__meta{display:flex; justify-content:space-between; gap:12px; align-items:baseline;
+  font-family:var(--f-mono); font-size:12px; color:var(--muted)}
+.card__meta b{color:var(--ink); font-weight:500; font-variant-numeric:tabular-nums}
+.card p{font-size:14px; color:var(--ink-2)}
+.card__tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:auto}
+.tag{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+  border:1px solid var(--line-2); color:var(--muted); padding:4px 8px; border-radius:100px}
+
+/* ---------- realizacje (pasmo nocne) ---------- */
+.sec--noc{
+  --paper:#121013; --paper-2:#191619; --surface:#1A171B;
+  --ink:#F1EDE9; --ink-2:#CCC4C6; --muted:#968D93;
+  --line:#2C282F; --line-2:#3C3742; --brass:#DFA98C;
+  background:var(--paper); color:var(--ink);
+}
+.case{display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(22px,3.4vw,46px); align-items:start}
+@media (max-width:880px){ .case{grid-template-columns:1fr} }
+.case__fig{margin:0; border:1px solid var(--line-2); background:#0B0A0C}
+.case__fig img,.case__fig svg{display:block; width:100%; height:auto}
+.case__fig figcaption{font-family:var(--f-mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted); padding:11px 13px; border-top:1px solid var(--line)}
+.case__txt h3{font-size:clamp(23px,2.9vw,32px); margin:9px 0 12px}
+.case__txt > p{color:var(--ink-2); font-size:15.5px; max-width:44ch}
+.case__spec{margin:24px 0 0; display:grid; border-top:1px solid var(--line)}
+.case__spec div{display:grid; grid-template-columns:112px 1fr; gap:14px; padding:11px 0;
+  border-bottom:1px solid var(--line); font-size:14px; align-items:baseline}
+.case__spec dt{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--muted)}
+.case__spec dd{margin:0; color:var(--ink-2)}
+.case blockquote{margin:24px 0 0; padding-left:18px; border-left:2px solid var(--brass);
+  font-family:var(--f-display); font-style:italic; font-size:19px; line-height:1.45; max-width:40ch}
+
+/* ---------- konfigurator ---------- */
+.conf{display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,3vw,40px); align-items:start}
+@media (max-width:900px){ .conf{grid-template-columns:1fr} }
+.stage{position:sticky; top:82px; background:var(--surface); border:1px solid var(--line); padding:18px}
+.stage__svg{display:block; width:100%; height:auto}
+.stage__cap{display:flex; justify-content:space-between; gap:10px; margin-top:12px;
+  font-family:var(--f-mono); font-size:11.5px; color:var(--muted); letter-spacing:.04em}
+fieldset{border:0; border-top:1px solid var(--line); padding:18px 0 0; margin:0 0 20px}
+legend{padding:0; font-family:var(--f-mono); font-size:11px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--muted)}
+.opts{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+.opt{position:relative}
+.opt input{position:absolute; opacity:0; width:0; height:0}
+.opt span{display:inline-block; padding:9px 14px; border:1px solid var(--line-2); border-radius:var(--r-sm);
+  font-size:13.5px; cursor:pointer; background:var(--paper)}
+.opt input:checked + span{border-color:var(--brass); background:var(--brass); color:#fff}
+.opt input:focus-visible + span{outline:2px solid var(--brass); outline-offset:2px}
+.opt span small{display:block; font-family:var(--f-mono); font-size:10.5px; opacity:.72; margin-top:2px}
+.field{display:grid; gap:7px; margin-top:16px}
+.field label{font-size:13px; color:var(--muted)}
+input[type="text"],input[type="tel"],input[type="date"],input[type="number"],textarea,select{
+  font:inherit; font-size:14.5px; color:var(--ink); background:var(--paper);
+  border:1px solid var(--line-2); border-radius:var(--r-sm); padding:11px 12px; width:100%}
+textarea{min-height:96px; resize:vertical}
+.sum{border-top:2px solid var(--ink); padding-top:16px}
+.sum__row{display:flex; justify-content:space-between; gap:14px; padding:6px 0;
+  font-size:14px; color:var(--ink-2)}
+.sum__row span:last-child{font-family:var(--f-mono); font-variant-numeric:tabular-nums; color:var(--ink)}
+.sum__total{display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+  margin-top:12px; padding-top:12px; border-top:1px solid var(--line)}
+.sum__total b{font-family:var(--f-display); font-size:clamp(30px,4.6vw,42px); font-weight:400;
+  font-variant-numeric:tabular-nums; color:var(--brass)}
+.note{font-size:12.5px; color:var(--muted); margin-top:10px}
+
+/* ---------- proces ---------- */
+.steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:26px}
+.step{border-top:2px solid var(--brass); padding-top:16px}
+.step b{display:block; font-family:var(--f-mono); font-size:12px; color:var(--brass); letter-spacing:.16em}
+.step h3{font-size:19px; margin:8px 0 6px}
+.step p{font-size:14px; color:var(--ink-2)}
+.step i{display:block; font-style:normal; font-family:var(--f-mono); font-size:11.5px; color:var(--muted); margin-top:8px}
+
+/* ---------- okazje ---------- */
+.occ{display:flex; flex-wrap:wrap; gap:10px}
+.occ li{list-style:none; font-size:14.5px; border:1px solid var(--line-2); border-radius:100px; padding:8px 16px}
+.occ li:nth-child(3n){border-color:var(--brass); color:var(--brass)}
+
+/* ---------- faq ---------- */
+.faq{max-width:74ch}
+details{border-bottom:1px solid var(--line); padding:4px 0}
+summary{cursor:pointer; padding:15px 0; font-size:16.5px; list-style:none; display:flex; gap:14px; align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+"; font-family:var(--f-mono); color:var(--brass); font-size:18px; line-height:1}
+details[open] summary::before{content:"–"}
+details p{padding:0 0 16px 28px; color:var(--ink-2); font-size:14.5px; max-width:62ch}
+
+/* ---------- kontakt ---------- */
+.contact{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(24px,4vw,52px)}
+@media (max-width:860px){ .contact{grid-template-columns:1fr} }
+.form-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.form-grid .span2{grid-column:span 2}
+@media (max-width:520px){ .form-grid{grid-template-columns:1fr} .form-grid .span2{grid-column:span 1} }
+.det{display:grid; gap:0; border-top:1px solid var(--line)}
+.det div{display:grid; grid-template-columns:110px 1fr; gap:14px; padding:14px 0; border-bottom:1px solid var(--line);
+  font-size:14.5px; align-items:baseline}
+.det dt{font-family:var(--f-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+.det dd{margin:0}
+.det a{text-decoration:none; border-bottom:1px solid var(--line-2)}
+.det a:hover{color:var(--brass); border-color:var(--brass)}
+.todo{font-family:var(--f-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--brass); border:1px dashed var(--brass); padding:2px 6px; border-radius:100px; margin-left:8px;
+  white-space:nowrap}
+.toast{font-size:13px; color:var(--brass); min-height:20px; margin-top:8px}
+
+/* ---------- stopka ---------- */
+.foot{border-top:1px solid var(--line); padding-block:30px; font-size:13px; color:var(--muted)}
+.foot__in{display:flex; flex-wrap:wrap; gap:22px; justify-content:space-between; align-items:center}
+.foot__znak{display:block; width:94px; flex:0 0 94px}
+.foot__znak img,.foot__znak svg{display:block; width:100%; height:auto; border-radius:50%}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--brass)}
+</style>
+
+<noscript><style>.curtain{display:none}</style></noscript>
+
+<button class="curtain" id="curtain" type="button" aria-label="Rozsuń kurtynę i wejdź na stronę">
+  <span class="curtain__rod"></span>
+  <span class="curtain__panel curtain__panel--l"></span>
+  <span class="curtain__panel curtain__panel--r"></span>
+  <span class="curtain__mark">
+    <span class="curtain__znak" id="znak-kurtyna"></span>
+    <span class="curtain__hint"><span></span>Rozsuń kurtynę<span></span></span>
+  </span>
+</button>
+
+<header class="top">
+  <div class="wrap top__in">
+    <a class="logo" href="#gora" aria-label="Aranżeria — początek strony">
+      <span class="logo__mark" id="znak-naglowek"></span>
+      <span class="logo__txt">ARANŻERIA</span>
+    </a>
+    <nav class="nav">
+      <a href="#katalog">Ścianki</a>
+      <a href="#realizacje">Realizacje</a>
+      <a href="#konfigurator">Wycena</a>
+      <a href="#proces">Jak to działa</a>
+      <a href="#okazje">Okazje</a>
+      <a href="#faq">Pytania</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="top__tel" href="tel:+48604734138">604 734 138</a>
+  </div>
+</header>
+
+<main id="gora">
+
+  <section class="hero wrap">
+    <div class="hero__grid">
+      <div>
+        <p class="eyebrow">Wynajem i produkcja ścianek okazjonalnych</p>
+        <h1>Tło, przed którym<br>wszyscy chcą <em>stanąć</em>.</h1>
+        <p class="hero__lead">Projektujemy i budujemy ścianki na wesela, chrzciny, komunie, urodziny i eventy firmowe. Przywozimy, stawiamy, po imprezie zabieramy — Wy zajmujecie się tylko zdjęciami.</p>
+        <div class="cta-row">
+          <a class="btn" href="#konfigurator">Policz swoją ściankę</a>
+          <a class="btn btn--ghost" href="#katalog">Zobacz katalog</a>
+        </div>
+      </div>
+      <div class="hero__facts">
+        <div class="fact"><b>45 min</b><span>Montaż na miejscu, przed przyjazdem gości</span></div>
+        <div class="fact"><b>60 km</b><span>Dojazd w cenie, dalej 2,50 zł/km</span></div>
+        <div class="fact"><b>2×2 – 3×2,5 m</b><span>Standardowe formaty stelaży</span></div>
+        <div class="fact"><b>20%</b><span>Zaliczka rezerwująca termin</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--alt" id="katalog">
+    <div class="wrap">
+      <div class="sec__head">
+        <div>
+          <p class="eyebrow">Katalog</p>
+          <h2>Pięć ścianek, które jeżdżą<br>z nami najczęściej</h2>
+        </div>
+        <p>Każdą budujemy na aluminiowym stelażu z obciążnikami — stoi stabilnie także na trawie i w plenerze.</p>
+      </div>
+      <div class="cards" id="katalog-cards"></div>
+    </div>
+  </section>
+
+  <section class="sec sec--noc" id="realizacje">
+    <div class="wrap">
+      <div class="sec__head">
+        <div>
+          <p class="eyebrow">Realizacje</p>
+          <h2>Ścianka, której nie ma<br>nikt inny</h2>
+        </div>
+        <p>Najciekawsze zlecenia to te pod konkretną osobę — motyw, kolory i detale dobrane do solenizanta.</p>
+      </div>
+
+      <article class="case">
+        <figure class="case__fig">
+          <span id="foto-18"></span>
+          <figcaption>18. urodziny · realizacja wieczorna, taras</figcaption>
+        </figure>
+        <div class="case__txt">
+          <p class="eyebrow">18. urodziny</p>
+          <h3>Sportowo, na czarno,<br>pod jedną osobę</h3>
+          <p>Miało być nowocześnie, trochę sportowo i przede wszystkim inaczej niż wszystkie. Czerń, biel, światła i detale w ulubionym klimacie solenizanta — z jego imieniem na środku i sneakersami na podświetlanych półkach.</p>
+          <dl class="case__spec">
+            <div><dt>Format</dt><dd>Moduł główny 250 × 300 cm + wieża boczna 90 cm</dd></div>
+            <div><dt>Wykończenie</dt><dd>Czarna płyta, taśmy LED po całym obwodzie</dd></div>
+            <div><dt>Personalizacja</dt><dd>Imię solenizanta i grafika na wydruku</dd></div>
+            <div><dt>Wieża boczna</dt><dd>Cztery podświetlane półki ekspozycyjne</dd></div>
+            <div><dt>Dodatki</dt><dd>Girlanda balonowa w czerni, bieli i chromie, świetlne cyfry „18", kwiaty papierowe 3D, czarny podest</dd></div>
+            <div><dt>Montaż</dt><dd>Taras zewnętrzny, ustawienie przed zmierzchem</dd></div>
+          </dl>
+          <blockquote>Takie realizacje lubimy najbardziej — kiedy można stworzyć coś dopasowanego do konkretnej osoby i okazji.</blockquote>
+          <div class="cta-row">
+            <a class="btn" href="#kontakt">Zapytaj o ściankę pod motyw</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="konfigurator">
+    <div class="wrap">
+      <div class="sec__head">
+        <div>
+          <p class="eyebrow">Wycena orientacyjna</p>
+          <h2>Złóż swoją ściankę</h2>
+        </div>
+        <p>Podgląd zmienia się na żywo. Ostateczną cenę potwierdzamy mailem po sprawdzeniu terminu i miejsca.</p>
+      </div>
+
+      <div class="conf">
+        <div class="stage">
+          <div id="podglad"></div>
+          <div class="stage__cap">
+            <span id="cap-typ">Ścianka kwiatowa</span>
+            <span id="cap-wym">200 × 200 cm</span>
+          </div>
+        </div>
+
+        <form id="conf-form">
+          <fieldset>
+            <legend>Rodzaj ścianki</legend>
+            <div class="opts" id="opt-typ"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Format</legend>
+            <div class="opts" id="opt-rozmiar"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Dodatki</legend>
+            <div class="opts" id="opt-dodatki"></div>
+            <div class="field" id="pole-neon" hidden>
+              <label for="neon-tekst">Napis na neonie (maks. 18 znaków)</label>
+              <input type="text" id="neon-tekst" maxlength="18" value="Ania &amp; Marek">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Dojazd</legend>
+            <div class="field">
+              <label for="km">Odległość od naszej bazy w jedną stronę (km)</label>
+              <input type="number" id="km" min="0" max="400" step="5" value="30">
+            </div>
+          </fieldset>
+
+          <div class="sum">
+            <div id="sum-rows"></div>
+            <div class="sum__total">
+              <span class="eyebrow">Razem, brutto</span>
+              <b id="sum-total">0 zł</b>
+            </div>
+            <p class="note">Cena obejmuje wynajem na jedną dobę, transport, montaż i demontaż. Kwoty orientacyjne — terminy w sezonie (maj–wrzesień) potwierdzamy indywidualnie.</p>
+            <div class="cta-row">
+              <button class="btn" type="button" id="do-formularza">Przenieś wycenę do zapytania</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--alt" id="proces">
+    <div class="wrap">
+      <div class="sec__head">
+        <div>
+          <p class="eyebrow">Jak to działa</p>
+          <h2>Cztery kroki od zapytania<br>do zdjęć z imprezy</h2>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <b>KROK 01</b>
+          <h3>Zapytanie i termin</h3>
+          <p>Piszesz datę, miejsce i rodzaj uroczystości. Sprawdzamy dostępność i wysyłamy wycenę.</p>
+          <i>Odpowiedź do 24 h</i>
+        </div>
+        <div class="step">
+          <b>KROK 02</b>
+          <h3>Projekt i rezerwacja</h3>
+          <p>Dobieramy kolory kwiatów, treść neonu i format. Termin blokuje zaliczka 20%.</p>
+          <i>2–3 dni na akceptację</i>
+        </div>
+        <div class="step">
+          <b>KROK 03</b>
+          <h3>Montaż na miejscu</h3>
+          <p>Przyjeżdżamy 2–3 godziny przed przyjęciem, stawiamy ściankę i ustawiamy oświetlenie.</p>
+          <i>45 min na montaż</i>
+        </div>
+        <div class="step">
+          <b>KROK 04</b>
+          <h3>Demontaż</h3>
+          <p>Zabieramy wszystko po zakończeniu przyjęcia albo następnego dnia rano — jak wygodniej.</p>
+          <i>W cenie wynajmu</i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="okazje">
+    <div class="wrap">
+      <div class="sec__head">
+        <div>
+          <p class="eyebrow">Okazje</p>
+          <h2>Stawiamy ścianki na</h2>
+        </div>
+        <p>Nie ma na liście Twojej uroczystości? Zbudujemy ściankę pod konkretny motyw przewodni.</p>
+      </div>
+      <ul class="occ">
+        <li>Wesela i śluby cywilne</li>
+        <li>Chrzciny</li>
+        <li>Komunie</li>
+        <li>Roczki i baby shower</li>
+        <li>Osiemnastki</li>
+        <li>Jubileusze i rocznice</li>
+        <li>Eventy firmowe</li>
+        <li>Konferencje i targi</li>
+        <li>Sesje zdjęciowe</li>
+        <li>Bale i studniówki</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec sec--alt" id="faq">
+    <div class="wrap">
+      <div class="sec__head">
+        <div>
+          <p class="eyebrow">Pytania</p>
+          <h2>Zanim napiszesz</h2>
+        </div>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Ile miejsca potrzeba na ściankę?</summary>
+          <p>Dla formatu 2×2 m wystarczy 2,6 m szerokości i 60 cm głębokości na stelaż z obciążnikami. Największy format 3×2,5 m potrzebuje 3,6 m ściany. Warto zostawić 2 m wolnej przestrzeni z przodu, żeby goście mieścili się w kadrze.</p>
+        </details>
+        <details>
+          <summary>Czy ścianka może stanąć w plenerze?</summary>
+          <p>Tak — stelaż ma obciążniki i kotwy do gruntu. Przy prognozie powyżej 40 km/h wiatru proponujemy przeniesienie ścianki pod zadaszenie albo do sali; bezpieczeństwo gości jest ważniejsze niż ustawienie.</p>
+        </details>
+        <details>
+          <summary>Na ile wcześniej rezerwować termin?</summary>
+          <p>Soboty w sezonie od maja do września schodzą zwykle 4–6 miesięcy wcześniej. Poza sezonem wystarczy 2–3 tygodnie, a przy wolnym terminie realizujemy zamówienia nawet z tygodnia na tydzień.</p>
+        </details>
+        <details>
+          <summary>Czy neon można spersonalizować?</summary>
+          <p>Tak. Robimy napisy z imionami, datą albo hasłem — do 18 znaków w jednej linii. Neon LED na pleksi wykonujemy w 7–10 dni roboczych, więc przy personalizacji potrzebujemy dwóch tygodni zapasu.</p>
+        </details>
+        <details>
+          <summary>Co z płatnością i fakturą?</summary>
+          <p>Zaliczka 20% przy rezerwacji, reszta przelewem na 3 dni przed wydarzeniem lub gotówką przy montażu. Wystawiamy faktury — również dla firm organizujących eventy.</p>
+        </details>
+        <details>
+          <summary>Czy ściankę można kupić na własność?</summary>
+          <p>Tak, budujemy ścianki na zamówienie — najczęściej dla sal weselnych, fotobudek i firm z własnym brandingiem. Wycena zależy od konstrukcji i materiału; termin realizacji to zwykle 3–4 tygodnie.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="kontakt">
+    <div class="wrap">
+      <div class="sec__head">
+        <div>
+          <p class="eyebrow">Kontakt</p>
+          <h2>Sprawdźmy Twój termin</h2>
+        </div>
+        <p>Najszybciej odpowiadamy na wiadomości z datą i miejscem wydarzenia.</p>
+      </div>
+
+      <div class="contact">
+        <form id="zapytanie">
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-imie">Imię i nazwisko</label>
+              <input type="text" id="f-imie" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="f-tel">Telefon</label>
+              <input type="tel" id="f-tel" autocomplete="tel" placeholder="+48">
+            </div>
+            <div class="field">
+              <label for="f-data">Data wydarzenia</label>
+              <input type="date" id="f-data">
+            </div>
+            <div class="field">
+              <label for="f-miejsce">Miejscowość / sala</label>
+              <input type="text" id="f-miejsce">
+            </div>
+            <div class="field span2">
+              <label for="f-scianka">Wybrana ścianka</label>
+              <input type="text" id="f-scianka" value="Ścianka kwiatowa, 200 × 200 cm">
+            </div>
+            <div class="field span2">
+              <label for="f-wiad">Wiadomość</label>
+              <textarea id="f-wiad" placeholder="Rodzaj uroczystości, kolory, godzina montażu…"></textarea>
+            </div>
+          </div>
+          <div class="cta-row">
+            <button class="btn" type="button" id="kopiuj">Skopiuj zapytanie</button>
+            <a class="btn btn--ghost" href="mailto:MWaranzeria@gmail.com" id="mail-link">Napisz e-mail</a>
+          </div>
+          <p class="toast" id="toast" role="status"></p>
+        </form>
+
+        <div>
+          <dl class="det">
+            <div><dt>Telefon</dt><dd><a href="tel:+48604734138">604 734 138</a></dd></div>
+            <div><dt>E-mail</dt><dd><a href="mailto:MWaranzeria@gmail.com">MWaranzeria@gmail.com</a></dd></div>
+            <div><dt>Instagram</dt><dd><a href="#kontakt">@aranzeria</a> <span class="todo">podlinkuj profil</span></dd></div>
+            <div><dt>Baza</dt><dd>[miejscowość] <span class="todo">do uzupełnienia</span></dd></div>
+            <div><dt>Zasięg</dt><dd>60 km w cenie, dalej 2,50 zł za każdy kilometr</dd></div>
+            <div><dt>Godziny</dt><dd>Pon.–pt. 10:00–18:00, sob. montaże</dd></div>
+          </dl>
+          <p class="note">Ścianki na zamówienie wyceniamy indywidualnie — napisz, jaki masz pomysł i gdzie ma stanąć.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span class="foot__znak" id="znak-stopka"></span>
+    <span>Dekoracje · Wypożyczalnia · Aranżacje<br>
+      <a href="tel:+48604734138">604 734 138</a> · <a href="mailto:MWaranzeria@gmail.com">MWaranzeria@gmail.com</a></span>
+    <span><a href="#gora">Na górę</a> · <a href="#realizacje">Realizacje</a> · <a href="#konfigurator">Wycena</a> · <a href="#kontakt">Kontakt</a></span>
+  </div>
+</footer>
+
+<script>
+/* ---------- deterministyczny szum do generowania kwiatów i cekinów ---------- */
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+const TYPY = {
+  kwiatowa:{nazwa:"Ścianka kwiatowa", baza:850, opis:"Gęsty kobierzec sztucznych kwiatów na zielonej bazie — róże, hortensje i eukaliptus w palecie dobranej do bukietu.", tagi:["kwiaty premium","paleta na wymiar","wesela"]},
+  pleksi:{nazwa:"Pleksi z neonem", baza:700, opis:"Mleczna pleksi w kształcie łuku, podświetlona od tyłu, z neonem LED — imiona, data albo hasło.", tagi:["łuk","neon led","personalizacja"]},
+  cekinowa:{nazwa:"Ścianka cekinowa", baza:650, opis:"Tysiące obracających się cekinów, które łapią każde światło. Najwdzięczniejsze tło dla fotobudki.", tagi:["złoto / srebro","fotobudka","osiemnastki"]},
+  lamelowa:{nazwa:"Lamele drewniane", baza:750, opis:"Pionowe listwy dębowe na ciemnym tle — spokojne, eleganckie tło do chrzcin, komunii i eventów firmowych.", tagi:["dąb","minimal","firmowe"]},
+  boho:{nazwa:"Boho z makramą", baza:800, opis:"Ręcznie pleciona makrama na drewnianym łuku, trawa pampasowa i suszki w ciepłych beżach.", tagi:["makrama","pampasy","plener"]}
+};
+const ROZMIARY = {
+  "200":{et:"2 × 2 m", cm:"200 × 200 cm", w:200, h:200, mn:1},
+  "240":{et:"2,4 × 2,4 m", cm:"240 × 240 cm", w:240, h:240, mn:1.25},
+  "300":{et:"3 × 2,5 m", cm:"300 × 250 cm", w:300, h:250, mn:1.6}
+};
+const DODATKI = {
+  neon:{et:"Neon z napisem", cena:350},
+  led:{et:"Podświetlenie LED", cena:150},
+  narozniki:{et:"Narożniki kwiatowe", cena:200},
+  podest:{et:"Podest i dywan", cena:180},
+  obsluga:{et:"Obsługa na miejscu", cena:250}
+};
+const zl = n => new Intl.NumberFormat("pl-PL",{style:"currency",currency:"PLN",maximumFractionDigits:0}).format(n);
+
+/* ---------- rysowanie elewacji ścianki ---------- */
+function rysuj(o){
+  const s = ROZMIARY[o.rozmiar] || ROZMIARY["200"];
+  const H = 300, W = Math.round(H * s.w / s.h), VB = 440, FLOOR = 74;
+  const x0 = (VB - W) / 2, y0 = 8, y1 = y0 + H;
+  const r = rng(o.typ.length * 97 + s.w);
+  let g = "", defs = "";
+
+  defs += `<linearGradient id="podl" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="rgba(0,0,0,.14)"/><stop offset="1" stop-color="rgba(0,0,0,0)"/></linearGradient>`;
+  defs += `<filter id="glow" x="-40%" y="-60%" width="180%" height="240%">
+    <feGaussianBlur stdDeviation="4.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+  defs += `<filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>`;
+
+  const luk = `M${x0},${y1} L${x0},${y0 + W/2} A${W/2},${W/2} 0 0 1 ${x0+W},${y0+W/2} L${x0+W},${y1} Z`;
+
+  /* podest i dywan */
+  if(o.dod.includes("podest")){
+    g += `<rect x="${x0-26}" y="${y1}" width="${W+52}" height="13" fill="#3A3439"/>`;
+    g += `<path d="M${x0-52},${y1+13} L${x0+W+52},${y1+13} L${x0+W+96},${y1+FLOOR} L${x0-96},${y1+FLOOR} Z" fill="#8E5F63" opacity=".85"/>`;
+  }
+
+  if(o.typ === "kwiatowa"){
+    defs += `<clipPath id="cl"><rect x="${x0}" y="${y0}" width="${W}" height="${H}" rx="2"/></clipPath>`;
+    g += `<rect x="${x0}" y="${y0}" width="${W}" height="${H}" fill="#26342A"/>`;
+    let f = "";
+    for(let i=0;i<110;i++){ // liście
+      const cx=x0+r()*W, cy=y0+r()*H, rad=9+r()*9;
+      f += `<ellipse cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" rx="${rad.toFixed(1)}" ry="${(rad*.55).toFixed(1)}" transform="rotate(${(r()*180).toFixed(0)} ${cx.toFixed(1)} ${cy.toFixed(1)})" fill="${["#3E5741","#4F6B4B","#8FA085"][Math.floor(r()*3)]}"/>`;
+    }
+    const kw=["#F4EEE3","#EBD4CE","#D8A3A4","#F0DCC9","#C98E92","#FBF7F0"];
+    for(let i=0;i<190;i++){
+      const cx=x0+r()*W, cy=y0+r()*H, rad=5+r()*7, c=kw[Math.floor(r()*kw.length)];
+      f += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${rad.toFixed(1)}" fill="${c}"/>`;
+      f += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${(rad*.38).toFixed(1)}" fill="rgba(0,0,0,.14)"/>`;
+    }
+    g += `<g clip-path="url(#cl)">${f}</g>`;
+  }
+
+  if(o.typ === "pleksi"){
+    defs += `<linearGradient id="pl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF8F4"/><stop offset="1" stop-color="#E5DED6"/></linearGradient>`;
+    g += `<path d="${luk}" fill="url(#pl)" stroke="#CFC6BC"/>`;
+    g += `<path d="${luk}" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2" transform="translate(6,6) scale(.97) translate(${(x0*0.03).toFixed(1)},${(y0*0.03).toFixed(1)})" opacity=".35"/>`;
+  }
+
+  if(o.typ === "cekinowa"){
+    defs += `<linearGradient id="cek" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E7CE96"/><stop offset=".45" stop-color="#B8933F"/>
+      <stop offset=".62" stop-color="#F3E3B8"/><stop offset="1" stop-color="#9C7A2E"/></linearGradient>`;
+    defs += `<clipPath id="cl"><rect x="${x0}" y="${y0}" width="${W}" height="${H}" rx="2"/></clipPath>`;
+    g += `<rect x="${x0}" y="${y0}" width="${W}" height="${H}" fill="#6B5522"/>`;
+    let f="";
+    const st=13;
+    for(let y=y0+8;y<y1;y+=st){
+      for(let x=x0+7;x<x0+W;x+=st){
+        const off=(Math.round((y-y0)/st)%2)?st/2:0;
+        f += `<circle cx="${(x+off).toFixed(1)}" cy="${y.toFixed(1)}" r="6.2" fill="url(#cek)" opacity="${(0.62+r()*0.38).toFixed(2)}"/>`;
+      }
+    }
+    g += `<g clip-path="url(#cl)">${f}<rect x="${x0}" y="${y0}" width="${W}" height="${H}" fill="url(#podl)"/></g>`;
+  }
+
+  if(o.typ === "lamelowa"){
+    defs += `<linearGradient id="lam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8A6540"/><stop offset=".4" stop-color="#C79A68"/>
+      <stop offset="1" stop-color="#7A5836"/></linearGradient>`;
+    g += `<rect x="${x0}" y="${y0}" width="${W}" height="${H}" fill="#221E1C"/>`;
+    for(let x=x0+9; x<x0+W-8; x+=19){
+      g += `<rect x="${x.toFixed(1)}" y="${y0+9}" width="12" height="${H-18}" rx="2" fill="url(#lam)"/>`;
+      g += `<rect x="${(x+9).toFixed(1)}" y="${y0+9}" width="3" height="${H-18}" fill="rgba(0,0,0,.28)"/>`;
+    }
+    g += `<rect x="${x0}" y="${y0}" width="${W}" height="${H}" fill="none" stroke="#2E2825" stroke-width="6"/>`;
+  }
+
+  if(o.typ === "boho"){
+    g += `<path d="${luk}" fill="#EDE3D4" stroke="#C9B69B"/>`;
+    g += `<path d="${luk}" fill="none" stroke="#A9865C" stroke-width="7"/>`;
+    defs += `<clipPath id="cl"><path d="${luk}"/></clipPath>`;
+    let f="";
+    for(let x=x0+14; x<x0+W-10; x+=9){
+      const top = y0 + W/2 - Math.sqrt(Math.max(0,(W/2)**2 - (x-(x0+W/2))**2));
+      const len = (H*0.42) + r()*H*0.4;
+      f += `<line x1="${x.toFixed(1)}" y1="${(top+6).toFixed(1)}" x2="${(x+(r()*6-3)).toFixed(1)}" y2="${Math.min(y1-6, top+len).toFixed(1)}" stroke="#D8C6AC" stroke-width="3" stroke-linecap="round"/>`;
+    }
+    for(let row=0; row<5; row++){
+      const yy = y0 + W/2 + 18 + row*17;
+      for(let x=x0+16; x<x0+W-14; x+=18){
+        f += `<path d="M${x},${yy} l9,10 l9,-10" fill="none" stroke="#BFA887" stroke-width="3" stroke-linecap="round"/>`;
+      }
+    }
+    g += `<g clip-path="url(#cl)">${f}</g>`;
+    // pampasy
+    for(let i=0;i<7;i++){
+      const px = x0 + (i<4 ? 10+i*9 : W-10-(i-4)*9), py = y1;
+      g += `<path d="M${px},${py} q${(r()*18-9).toFixed(1)},${-H*0.45} ${(r()*26-13).toFixed(1)},${(-H*0.72).toFixed(1)}" fill="none" stroke="#D9C4A2" stroke-width="7" stroke-linecap="round" opacity=".85"/>`;
+    }
+  }
+
+  /* narożniki kwiatowe */
+  if(o.dod.includes("narozniki")){
+    const kw=["#F4EEE3","#EBD4CE","#D8A3A4","#8FA085","#4F6B4B"];
+    for(const [bx,by,sx] of [[x0+6,y1-6,1],[x0+W-6,y0+16,-1]]){
+      for(let i=0;i<46;i++){
+        const a=r()*Math.PI/2, d=r()*72;
+        const cx=bx+sx*Math.cos(a)*d, cy=by-(by>y0+H/2?1:-1)*Math.sin(a)*d;
+        g += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${(3.5+r()*6).toFixed(1)}" fill="${kw[Math.floor(r()*kw.length)]}"/>`;
+      }
+    }
+  }
+
+  /* neon */
+  if(o.dod.includes("neon")){
+    const t=(o.neon||"").trim() || "Wasze imiona";
+    const fs = Math.max(20, Math.min(46, (W-70)/(t.length*0.44)));
+    g += `<text x="${x0+W/2}" y="${y0+H*0.5}" text-anchor="middle" filter="url(#glow)"
+      font-family="'Dancing Script',cursive" font-size="${fs.toFixed(0)}" fill="#FFF1D6">${t.replace(/[<&>]/g,"")}</text>`;
+  }
+
+  /* światło LED */
+  if(o.dod.includes("led")){
+    g = `<ellipse cx="${VB/2}" cy="${y0+H/2}" rx="${W*0.62}" ry="${H*0.6}" fill="#E8C98A" opacity=".28" filter="url(#soft)"/>` + g;
+    g += `<rect x="${x0-14}" y="${y1-4}" width="${W+28}" height="4" rx="2" fill="#F0D79E"/>`;
+  }
+
+  /* stelaż i cień */
+  const stopy = `<g stroke="#5A5359" stroke-width="5" stroke-linecap="round">
+    <line x1="${x0+18}" y1="${y1}" x2="${x0+18}" y2="${y1+16}"/>
+    <line x1="${x0+W-18}" y1="${y1}" x2="${x0+W-18}" y2="${y1+16}"/>
+    <line x1="${x0+2}" y1="${y1+16}" x2="${x0+40}" y2="${y1+16}"/>
+    <line x1="${x0+W-40}" y1="${y1+16}" x2="${x0+W-2}" y2="${y1+16}"/></g>`;
+
+  return `<svg class="stage__svg" viewBox="0 0 ${VB} ${y1+FLOOR}" role="img" aria-label="${(TYPY[o.typ]||{}).nazwa||"Ścianka"}, ${s.cm}">
+    <defs>${defs}</defs>
+    <ellipse cx="${VB/2}" cy="${y1+22}" rx="${W*0.56}" ry="11" fill="rgba(0,0,0,.2)" filter="url(#soft)"/>
+    ${g}
+    ${o.dod.includes("podest") ? "" : stopy}
+    ${o.wymiary!==false ? `<g font-family="'IBM Plex Mono',monospace" font-size="11" fill="currentColor" opacity=".6">
+      <line x1="${x0}" y1="${y1+42}" x2="${x0+W}" y2="${y1+42}" stroke="currentColor" stroke-width="1" opacity=".5"/>
+      <line x1="${x0}" y1="${y1+37}" x2="${x0}" y2="${y1+47}" stroke="currentColor" stroke-width="1" opacity=".5"/>
+      <line x1="${x0+W}" y1="${y1+37}" x2="${x0+W}" y2="${y1+47}" stroke="currentColor" stroke-width="1" opacity=".5"/>
+      <text x="${VB/2}" y="${y1+60}" text-anchor="middle">${s.cm}</text></g>` : ""}
+  </svg>`;
+}
+
+/* ---------- katalog ---------- */
+const katalog = document.getElementById("katalog-cards");
+katalog.innerHTML = Object.entries(TYPY).map(([k,v])=>{
+  const dod = k==="pleksi" ? ["neon"] : (k==="boho" ? [] : []);
+  return `<article class="card">
+    <div class="card__fig">${rysuj({typ:k, rozmiar:"200", dod, neon:"Ania & Marek", wymiary:false})}</div>
+    <h3>${v.nazwa}</h3>
+    <div class="card__meta"><span>wynajem / doba</span><b>od ${zl(v.baza)}</b></div>
+    <p>${v.opis}</p>
+    <div class="card__tags">${v.tagi.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+  </article>`;
+}).join("");
+
+/* ---------- konfigurator ---------- */
+const stan = {typ:"kwiatowa", rozmiar:"200", dod:[], neon:"Ania & Marek", km:30};
+
+document.getElementById("opt-typ").innerHTML = Object.entries(TYPY).map(([k,v],i)=>
+  `<label class="opt"><input type="radio" name="typ" value="${k}" ${i===0?"checked":""}>
+   <span>${v.nazwa}<small>od ${zl(v.baza)}</small></span></label>`).join("");
+
+document.getElementById("opt-rozmiar").innerHTML = Object.entries(ROZMIARY).map(([k,v],i)=>
+  `<label class="opt"><input type="radio" name="rozmiar" value="${k}" ${i===0?"checked":""}>
+   <span>${v.et}<small>${v.mn===1?"cena bazowa":"×"+String(v.mn).replace(".",",")}</small></span></label>`).join("");
+
+document.getElementById("opt-dodatki").innerHTML = Object.entries(DODATKI).map(([k,v])=>
+  `<label class="opt"><input type="checkbox" name="dod" value="${k}">
+   <span>${v.et}<small>+ ${zl(v.cena)}</small></span></label>`).join("");
+
+const form = document.getElementById("conf-form");
+const poleNeon = document.getElementById("pole-neon");
+const inpNeon = document.getElementById("neon-tekst");
+
+function przelicz(){
+  const t = TYPY[stan.typ], s = ROZMIARY[stan.rozmiar];
+  const baza = Math.round(t.baza * s.mn);
+  const rows = [[`${t.nazwa}, ${s.et}`, zl(baza)]];
+  let suma = baza;
+  stan.dod.forEach(d=>{ rows.push([DODATKI[d].et, zl(DODATKI[d].cena)]); suma += DODATKI[d].cena; });
+  const nadKm = Math.max(0, (Number(stan.km)||0) - 60);
+  const dojazd = Math.round(nadKm * 2 * 2.5);
+  rows.push(nadKm>0
+    ? [`Dojazd ponad limit (${nadKm} km × 2 × 2,50 zł)`, zl(dojazd)]
+    : ["Transport, montaż i demontaż", "w cenie"]);
+  suma += dojazd;
+
+  document.getElementById("sum-rows").innerHTML = rows.map(r=>
+    `<div class="sum__row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join("");
+  document.getElementById("sum-total").textContent = zl(suma);
+  document.getElementById("podglad").innerHTML = rysuj(stan);
+  document.getElementById("cap-typ").textContent = t.nazwa;
+  document.getElementById("cap-wym").textContent = s.cm;
+  poleNeon.hidden = !stan.dod.includes("neon");
+}
+
+form.addEventListener("input", e=>{
+  const el = e.target;
+  if(el.name === "typ") stan.typ = el.value;
+  if(el.name === "rozmiar") stan.rozmiar = el.value;
+  if(el.name === "dod") stan.dod = [...form.querySelectorAll('input[name="dod"]:checked')].map(i=>i.value);
+  if(el.id === "neon-tekst") stan.neon = el.value;
+  if(el.id === "km") stan.km = el.value;
+  przelicz();
+});
+przelicz();
+
+/* ---------- przeniesienie wyceny do formularza ---------- */
+document.getElementById("do-formularza").addEventListener("click", ()=>{
+  const t = TYPY[stan.typ], s = ROZMIARY[stan.rozmiar];
+  const dod = stan.dod.map(d=>DODATKI[d].et.toLowerCase());
+  document.getElementById("f-scianka").value =
+    `${t.nazwa}, ${s.cm}${dod.length?" + "+dod.join(", "):""}${stan.dod.includes("neon")?` („${stan.neon}”)`:""} — ok. ${document.getElementById("sum-total").textContent}`;
+  document.getElementById("kontakt").scrollIntoView({behavior:"smooth"});
+  setTimeout(()=>document.getElementById("f-imie").focus(), 500);
+});
+
+/* ---------- zapytanie ---------- */
+function trescZapytania(){
+  const v = id => document.getElementById(id).value.trim();
+  return [
+    "Zapytanie o ściankę — Aranżeria",
+    `Imię i nazwisko: ${v("f-imie") || "—"}`,
+    `Telefon: ${v("f-tel") || "—"}`,
+    `Data wydarzenia: ${v("f-data") || "—"}`,
+    `Miejsce: ${v("f-miejsce") || "—"}`,
+    `Ścianka: ${v("f-scianka") || "—"}`,
+    `Dojazd: ok. ${Number(stan.km)||0} km`,
+    "",
+    v("f-wiad") || ""
+  ].join("\n");
+}
+const toast = document.getElementById("toast");
+document.getElementById("kopiuj").addEventListener("click", async ()=>{
+  const txt = trescZapytania();
+  try{
+    await navigator.clipboard.writeText(txt);
+    toast.textContent = "Skopiowano — wklej w wiadomości na Instagramie, SMS-ie albo mailu.";
+  }catch{
+    toast.textContent = "Kopiowanie zablokowane w przeglądarce. Zaznacz treść i skopiuj ręcznie albo zadzwoń.";
+  }
+});
+document.getElementById("mail-link").addEventListener("click", e=>{
+  e.currentTarget.href = "mailto:MWaranzeria@gmail.com?subject=" +
+    encodeURIComponent("Zapytanie o ściankę") + "&body=" + encodeURIComponent(trescZapytania());
+});
+
+/* ---------- godło marki (zastępowane zdjęciem logo.png, gdy jest) ---------- */
+let _uid = 0;
+function emblemat(pelny){
+  const u = "e" + (++_uid);
+  const ring = pelny ? `
+    <path id="ring${u}" d="M50,50 m0,-40 a40,40 0 1,1 -0.01,0" fill="none"/>
+    <text font-family="'IBM Plex Mono',monospace" font-size="5.2" letter-spacing="2.15" fill="#E3B398">
+      <textPath href="#ring${u}" startOffset="2%">ARANŻACJE • DEKORACJE • WYPOŻYCZALNIA •</textPath></text>` : "";
+  const stopka = pelny ? `
+    <g stroke="#C08A6B" stroke-width=".5" opacity=".9">
+      <line x1="22" y1="63" x2="45" y2="63"/><line x1="55" y1="63" x2="78" y2="63"/>
+      <path d="M50,60 l2.6,3 l-2.6,3 l-2.6,-3 Z" fill="#E3B398" stroke="none"/></g>
+    <text x="50" y="80.5" text-anchor="middle" font-family="'IBM Plex Mono',monospace"
+      font-size="3.5" letter-spacing="1.25" fill="#D3A184">DEKORACJE • WYPOŻYCZALNIA • ARANŻACJE</text>` : "";
+  const nazwa = pelny ? `
+    <text x="50" y="74.5" text-anchor="middle" font-family="'Bodoni Moda',serif"
+      font-size="9.4" letter-spacing="2.5" fill="url(#z${u})">ARANŻERIA</text>` : "";
+  return `<svg viewBox="0 0 100 100" role="img" aria-label="Aranżeria — dekoracje, wypożyczalnia, aranżacje">
+    <defs><linearGradient id="z${u}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F6D3C0"/><stop offset=".34" stop-color="#C98A6B"/>
+      <stop offset=".58" stop-color="#F8DECE"/><stop offset="1" stop-color="#A8664A"/></linearGradient></defs>
+    <circle cx="50" cy="50" r="50" fill="#0A090A"/>
+    <circle cx="50" cy="50" r="46.4" fill="none" stroke="url(#z${u})" stroke-width=".7"/>
+    ${ring}
+    <text x="50" y="${pelny ? 50 : 60}" text-anchor="middle" font-family="'Bodoni Moda',serif"
+      font-size="${pelny ? 30 : 42}" letter-spacing="-1.5" fill="url(#z${u})">MW</text>
+    <path d="M30,${pelny ? 55 : 70} C40,${pelny ? 64 : 79} 60,${pelny ? 64 : 79} 70,${pelny ? 55 : 70}"
+      fill="none" stroke="url(#z${u})" stroke-width="1.1" stroke-linecap="round"/>
+    ${nazwa}${stopka}
+  </svg>`;
+}
+
+/* ---------- ilustracja realizacji (podmieniana na zdjęcie, gdy jest) ---------- */
+function rysujRealizacje(){
+  const r = rng(1811), W = 640, H = 440;
+  let g = "";
+  const bok = (x,y,w,h,krok)=>{
+    let o = "";
+    for(let i=x; i<=x+w; i+=krok){ o += `<circle cx="${i.toFixed(1)}" cy="${y}" r="2.2"/><circle cx="${i.toFixed(1)}" cy="${y+h}" r="2.2"/>` }
+    for(let j=y; j<=y+h; j+=krok){ o += `<circle cx="${x}" cy="${j.toFixed(1)}" r="2.2"/><circle cx="${x+w}" cy="${j.toFixed(1)}" r="2.2"/>` }
+    return `<g fill="#FFF6E4" filter="url(#lsn)">${o}</g>`;
+  };
+  const but = (x,y,s)=>`<g transform="translate(${x},${y}) scale(${s})">
+    <path d="M-17,8 C-17,2 -15,-3 -11,-5 C-7,-7 -3,-5 1,-2 C5,1 11,2 15,4 C18,5 18,8 15,8 Z" fill="#F4F1EC"/>
+    <path d="M-18,8 L16,8 L16,11 L-18,11 Z" fill="#CFCAC4"/>
+    <path d="M-9,-4 C-5,-1 0,1 5,3" stroke="#C9C3BC" stroke-width="1.4" fill="none"/></g>`;
+  const girlanda = (p0,p1,p2,n)=>{
+    const kol = ["#0C0C0E","#F2EFEA","#B9BCC0","#17171A","#E4DFD8","#8E9195"];
+    let o = "";
+    for(let i=0;i<=n;i++){
+      const t=i/n, k=(1-t)*(1-t), m=2*(1-t)*t, l=t*t;
+      const x=k*p0[0]+m*p1[0]+l*p2[0] + (r()*12-6);
+      const y=k*p0[1]+m*p1[1]+l*p2[1] + (r()*12-6);
+      const rad=7+r()*11;
+      o += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad.toFixed(1)}" fill="${kol[Math.floor(r()*kol.length)]}"/>`;
+      o += `<circle cx="${(x-rad*.3).toFixed(1)}" cy="${(y-rad*.32).toFixed(1)}" r="${(rad*.22).toFixed(1)}" fill="rgba(255,255,255,.3)"/>`;
+    }
+    return o;
+  };
+
+  g += `<rect width="${W}" height="${H}" fill="#0D0C0F"/>`;
+  g += `<rect y="348" width="${W}" height="92" fill="url(#podl2)"/>`;
+  /* kurtyna świetlna w tle */
+  g += `<g opacity=".75">`;
+  for(let x=6;x<178;x+=13){ for(let y=8;y<236;y+=16){
+    g += `<circle cx="${(x+r()*4-2).toFixed(1)}" cy="${y}" r="1.7" fill="#FFD7A2" opacity="${(0.3+r()*0.7).toFixed(2)}"/>`;
+  }}
+  g += `</g>`;
+  /* podest */
+  g += `<rect x="132" y="344" width="486" height="18" fill="#17161A"/>`;
+  g += `<ellipse cx="350" cy="352" rx="210" ry="16" fill="#E8C08E" opacity=".1" filter="url(#roz2)"/>`;
+  /* girlandy balonowe */
+  g += girlanda([196,138],[300,26],[452,52],20);
+  g += girlanda([556,74],[626,190],[598,336],14);
+  /* moduł główny */
+  g += `<rect x="224" y="58" width="232" height="288" fill="#0A0A0B" stroke="#232228"/>`;
+  g += bok(224,58,232,288,11);
+  g += `<text x="340" y="132" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="600"
+    font-size="27" letter-spacing="1.5" textLength="188" lengthAdjust="spacingAndGlyphs" fill="#FFFFFF">SEBASTIAN</text>`;
+  g += `<g fill="#FFFFFF">
+    <path d="M272,188 l128,0 l-16,13 l-128,0 Z"/>
+    <path d="M288,212 l96,0 l-16,13 l-96,0 Z" opacity=".8"/>
+    <path d="M306,236 l62,0 l-16,13 l-62,0 Z" opacity=".55"/></g>`;
+  g += `<line x1="284" y1="290" x2="396" y2="290" stroke="#5B5751"/>`;
+  g += `<text x="340" y="312" text-anchor="middle" font-family="'IBM Plex Mono',monospace"
+    font-size="10" letter-spacing="3.4" fill="#CFC8C2">18. URODZINY</text>`;
+  /* wieża boczna z półkami */
+  g += `<rect x="472" y="58" width="96" height="288" fill="#0A0A0B" stroke="#232228"/>`;
+  g += bok(472,58,96,288,11);
+  [112,178,244,306].forEach(y=>{
+    g += `<rect x="484" y="${y}" width="72" height="4" fill="#26242A"/>`;
+    g += but(520, y-6, 1.05);
+  });
+  /* świetlne cyfry 18 */
+  const cyfra = (x,y,w,h,otwory)=>{
+    let o = `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#191512" stroke="#3A322A"/>`;
+    o += `<g fill="#FFE6B6" filter="url(#lsn)">`;
+    for(let i=x+7;i<x+w;i+=15){ o += `<circle cx="${i}" cy="${y+7}" r="3.1"/><circle cx="${i}" cy="${y+h-7}" r="3.1"/>` }
+    for(let j=y+7;j<y+h;j+=15){ o += `<circle cx="${x+7}" cy="${j}" r="3.1"/><circle cx="${x+w-7}" cy="${j}" r="3.1"/>` }
+    o += `</g>`;
+    (otwory||[]).forEach(o2=>{ o += `<rect x="${o2[0]}" y="${o2[1]}" width="${o2[2]}" height="${o2[3]}" rx="2" fill="#0D0C0F" stroke="#3A322A"/>` });
+    return o;
+  };
+  g += `<ellipse cx="128" cy="292" rx="96" ry="78" fill="#F0C98A" opacity=".16" filter="url(#roz2)"/>`;
+  g += cyfra(62,228,40,116);
+  g += cyfra(110,228,76,116,[[128,246,40,30],[128,292,40,36]]);
+  /* kwiaty papierowe */
+  [[36,254,30],[92,300,23]].forEach(([cx,cy,rad])=>{
+    g += `<line x1="${cx}" y1="${cy}" x2="${cx}" y2="374" stroke="#6E6863" stroke-width="2"/>`;
+    g += `<ellipse cx="${cx}" cy="376" rx="16" ry="4" fill="none" stroke="#6E6863" stroke-width="2"/>`;
+    let pl = "";
+    for(let i=0;i<11;i++){
+      const a = (i/11)*Math.PI*2;
+      pl += `<ellipse cx="${(cx+Math.cos(a)*rad*.55).toFixed(1)}" cy="${(cy+Math.sin(a)*rad*.55).toFixed(1)}"
+        rx="${(rad*.52).toFixed(1)}" ry="${(rad*.3).toFixed(1)}"
+        transform="rotate(${(a*180/Math.PI).toFixed(0)} ${(cx+Math.cos(a)*rad*.55).toFixed(1)} ${(cy+Math.sin(a)*rad*.55).toFixed(1)})"
+        fill="#F1EDE5" opacity=".93"/>`;
+    }
+    g += pl + `<circle cx="${cx}" cy="${cy}" r="${(rad*.3).toFixed(1)}" fill="#E4DED2"/>`;
+  });
+
+  return `<svg viewBox="0 0 ${W} ${H}" role="img"
+    aria-label="Czarna ścianka na 18. urodziny z imieniem Sebastian, taśmami LED, wieżą z półkami na sneakersy, świetlnymi cyframi 18 i girlandą balonową">
+    <defs>
+      <linearGradient id="podl2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3C3128"/><stop offset="1" stop-color="#211B18"/></linearGradient>
+      <filter id="lsn" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="2.1" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="roz2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="16"/></filter>
+    </defs>${g}</svg>`;
+}
+
+/* ---------- zdjęcie z podmianą na rysunek, gdy pliku jeszcze nie ma ---------- */
+function zObrazem(el, src, alt, zapas){
+  if(!el) return;
+  el.innerHTML = `<img src="${src}" alt="${alt}">`;
+  const img = el.querySelector("img");
+  const podmien = ()=>{ el.innerHTML = zapas; };
+  img.addEventListener("error", podmien);
+  if(img.complete && img.naturalWidth === 0) podmien();
+}
+zObrazem(document.getElementById("znak-kurtyna"), "logo.png", "Aranżeria", emblemat(true));
+zObrazem(document.getElementById("znak-naglowek"), "logo.png", "Aranżeria", emblemat(false));
+zObrazem(document.getElementById("znak-stopka"), "logo.png", "Aranżeria", emblemat(true));
+zObrazem(document.getElementById("foto-18"), "zdjecia/scianka-18-urodziny.jpg",
+  "Czarna ścianka na 18. urodziny z imieniem solenizanta, taśmami LED i półkami na sneakersy", rysujRealizacje());
+
+/* ---------- kurtyna: rozsuwa się po kliknięciu ---------- */
+const kurtyna = document.getElementById("curtain");
+document.body.classList.add("zaslonieta");
+kurtyna.focus({preventScroll:true});
+function rozsun(){
+  if(kurtyna.classList.contains("otwarta")) return;
+  kurtyna.classList.add("otwarta");
+  document.body.classList.remove("zaslonieta");
+  setTimeout(()=>kurtyna.remove(), 1700);
+}
+kurtyna.addEventListener("click", rozsun);
+</script>
