@@ -13,6 +13,7 @@ prawdziwe pliki pod te ścieżki, podmienią się automatycznie:
 | Ścieżka | Co to jest |
 |---|---|
 | `logo.jpg` | okrągłe logo Aranżerii (nagłówek, kurtyna, stopka) — kwadrat, min. 512 × 512 px |
+| `monika.jpg` | zdjęcie Moniki w sekcji O mnie — kadr pionowy 4:5, ok. 800 px szerokości |
 | `scianka.jpg` | zdjęcie ścianki na 18. urodziny (sekcja Realizacje) — ok. 1600 px szerokości |
 
 Jeśli pliku nie ma, strona pokazuje rysunek zastępczy — nic się nie psuje.
@@ -28,7 +29,6 @@ Wszystko siedzi w `index.html`:
 
 ## Do uzupełnienia w treści
 
-- miejscowość bazy (sekcja Kontakt),
 - link do profilu na Instagramie,
 - weryfikacja cen w konfiguratorze — wartości są poglądowe.
 
