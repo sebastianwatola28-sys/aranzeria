@@ -78,7 +78,7 @@ img,svg{max-width:100%}
 
 /* ---------- kurtyna ---------- */
 .curtain{position:fixed; inset:0; z-index:100; overflow:hidden; cursor:pointer;
-  border:0; padding:0; width:100%; height:100%; background:var(--velvet-3);
+  border:0; padding:0; width:100%; height:100%; background:transparent;
   font:inherit; color:inherit; display:block; text-align:center}
 body.zaslonieta{overflow:hidden}
 .curtain__panel{
@@ -94,23 +94,23 @@ body.zaslonieta{overflow:hidden}
 }
 .curtain__panel--l{left:0; transform-origin:left center}
 .curtain.otwarta .curtain__panel--l{
-  animation:part-l 1.5s cubic-bezier(.72,.02,.24,1) forwards, gather 1.5s cubic-bezier(.72,.02,.24,1) forwards}
+  animation:part-l .9s cubic-bezier(.66,.02,.2,1) forwards, gather .9s cubic-bezier(.66,.02,.2,1) forwards}
 .curtain__panel--r{right:0; transform-origin:right center; background-image:
     linear-gradient(90deg, rgba(0,0,0,.3), rgba(255,255,255,.05) 54%, rgba(0,0,0,0) 88%, rgba(0,0,0,.34)),
     repeating-linear-gradient(90deg,
       var(--velvet-3) 0px, var(--velvet-1) 11px, var(--velvet-2) 22px,
       var(--velvet-1) 33px, var(--velvet-3) 46px, var(--velvet-3) 48px)}
 .curtain.otwarta .curtain__panel--r{
-  animation:part-r 1.5s cubic-bezier(.72,.02,.24,1) forwards, gather 1.5s cubic-bezier(.72,.02,.24,1) forwards}
+  animation:part-r .9s cubic-bezier(.66,.02,.2,1) forwards, gather .9s cubic-bezier(.66,.02,.2,1) forwards}
 .curtain__rod{position:absolute; top:0; left:0; right:0; height:12px;
   background:linear-gradient(180deg,#F0C6AF,#C98A6B 30%,#A65E43 62%,#5E3326);
   box-shadow:0 6px 18px -6px rgba(0,0,0,.6)}
-.curtain.otwarta .curtain__rod{animation:rod-out .5s ease 1.05s forwards}
+.curtain.otwarta .curtain__rod{animation:rod-out .35s ease .5s forwards}
 .curtain__mark{
   position:absolute; inset:0; display:grid; place-content:center; justify-items:center;
   gap:20px; padding:20px;
 }
-.curtain.otwarta .curtain__mark{animation:mark-out .5s ease forwards}
+.curtain.otwarta .curtain__mark{animation:mark-out .3s ease forwards}
 .curtain__znak{width:clamp(108px,17vw,168px); height:auto; filter:drop-shadow(0 6px 26px rgba(0,0,0,.6))}
 .curtain__znak img,.curtain__znak svg{display:block; width:100%; height:auto; border-radius:50%}
 .curtain__hint{display:flex; align-items:center; gap:12px; color:#E8DFDA;
@@ -1068,7 +1068,7 @@ function rozsun(){
   if(kurtyna.classList.contains("otwarta")) return;
   kurtyna.classList.add("otwarta");
   document.body.classList.remove("zaslonieta");
-  setTimeout(()=>kurtyna.remove(), 1700);
+  setTimeout(()=>kurtyna.remove(), 950);
 }
 kurtyna.addEventListener("click", rozsun);
 </script>
