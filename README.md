@@ -13,7 +13,7 @@ prawdziwe pliki pod te ścieżki, podmienią się automatycznie:
 | Ścieżka | Co to jest |
 |---|---|
 | `logo.png` | okrągłe logo Aranżerii (nagłówek, kurtyna, stopka) — najlepiej kwadratowy PNG, min. 512 × 512 px |
-| `zdjecia/scianka-18-urodziny.jpg` | zdjęcie ścianki na 18. urodziny w sekcji Realizacje — ok. 1600 px szerokości |
+| `scianka-18-urodziny.jpg` | zdjęcie ścianki na 18. urodziny (sekcja Realizacje) — ok. 1600 px szerokości |
 
 Jeśli pliku nie ma, strona pokazuje rysunek zastępczy — nic się nie psuje.
 
