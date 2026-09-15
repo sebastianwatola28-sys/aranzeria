@@ -1,3 +1,21 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Aranżeria — wynajem i produkcja ścianek okazjonalnych na wesela, chrzciny, komunie, urodziny i eventy firmowe. Ruda Śląska i okolice.">
+<meta name="theme-color" content="#121013">
+<link rel="icon" href="logo.jpg">
+<link rel="apple-touch-icon" href="logo.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="Aranżeria">
+<meta property="og:title" content="Aranżeria — ścianki okazjonalne">
+<meta property="og:description" content="Ścianki, przed którymi chce się stanąć. Wynajem i produkcja na wesela, chrzciny, komunie i urodziny. Ruda Śląska i okolice.">
+<meta property="og:url" content="https://sebastianwatola28-sys.github.io/aranzeria/">
+<meta property="og:image" content="https://sebastianwatola28-sys.github.io/aranzeria/scianka.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- ARTIFACT:START -->
 <title>Aranżeria</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -150,7 +168,16 @@ body.zaslonieta{overflow:hidden}
 .top__tel{font-family:var(--f-mono); font-size:13px; text-decoration:none; color:var(--ink);
   border:1px solid var(--line-2); padding:7px 12px; border-radius:var(--r-sm); white-space:nowrap}
 .top__tel:hover{border-color:var(--brass); color:var(--brass)}
-@media (max-width:880px){ .nav{display:none} }
+@media (max-width:880px){
+  .top__in{height:auto; flex-wrap:wrap; gap:10px 14px; padding-top:11px}
+  .logo{margin-right:auto}
+  .nav{order:3; flex-basis:100%; gap:0; margin:0; overflow-x:auto;
+    border-top:1px solid var(--line); scrollbar-width:none; -webkit-overflow-scrolling:touch}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{padding:12px 14px; white-space:nowrap; font-size:13px}
+  .nav a:first-child{padding-left:0}
+  section{scroll-margin-top:118px}
+}
 
 /* ---------- hero ---------- */
 .hero{padding-block:clamp(38px,7vw,74px) clamp(32px,5vw,56px)}
@@ -252,7 +279,7 @@ section{scroll-margin-top:76px}
 
 /* ---------- konfigurator ---------- */
 .conf{display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,3vw,40px); align-items:start}
-@media (max-width:900px){ .conf{grid-template-columns:1fr} }
+@media (max-width:900px){ .conf{grid-template-columns:1fr} .stage{position:static} }
 .stage{position:sticky; top:82px; background:var(--surface); border:1px solid var(--line); padding:18px}
 .stage__svg{display:block; width:100%; height:auto}
 .stage__cap{display:flex; justify-content:space-between; gap:10px; margin-top:12px;
@@ -1118,3 +1145,6 @@ function rozsun(){
 }
 kurtyna.addEventListener("click", rozsun);
 </script>
+
+</body>
+</html>
