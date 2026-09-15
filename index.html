@@ -352,6 +352,13 @@ details p{padding:0 0 16px 28px; color:var(--ink-2); font-size:14.5px; max-width
   white-space:nowrap}
 .toast{font-size:13px; color:var(--brass); min-height:20px; margin-top:8px}
 
+/* ---------- waskie ekrany: etykiety nad wartosciami ---------- */
+@media (max-width:520px){
+  .case__spec div,.det div{grid-template-columns:1fr; gap:4px; padding:12px 0}
+  .case__spec dt,.det dt{font-size:10px}
+  .omnie__lead{font-size:16.5px}
+}
+
 /* ---------- stopka ---------- */
 .foot{border-top:1px solid var(--line); padding-block:30px; font-size:13px; color:var(--muted)}
 .foot__in{display:flex; flex-wrap:wrap; gap:22px; justify-content:space-between; align-items:center}
