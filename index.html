@@ -312,6 +312,42 @@ textarea{min-height:96px; resize:vertical}
   font-variant-numeric:tabular-nums; color:var(--brass)}
 .note{font-size:12.5px; color:var(--muted); margin-top:10px}
 
+/* ---------- wypożyczalnia dodatków ---------- */
+.rent{display:grid; grid-template-columns:repeat(auto-fit,minmax(248px,1fr)); gap:1px;
+  background:var(--line); border:1px solid var(--line)}
+.rent__it{background:var(--paper); padding:22px; display:flex; flex-direction:column; gap:11px}
+.rent__ico{width:44px; height:44px; color:var(--brass)}
+.rent__it h3{font-size:19px}
+.rent__it p{font-size:14px; color:var(--ink-2)}
+.rent__spec{font-family:var(--f-mono); font-size:11.5px; color:var(--muted); line-height:1.7}
+.rent__cena{margin-top:auto; padding-top:11px; border-top:1px solid var(--line);
+  display:flex; justify-content:space-between; gap:12px; align-items:baseline;
+  font-family:var(--f-mono); font-size:11.5px; color:var(--muted)}
+.rent__cena b{color:var(--ink); font-weight:500; font-variant-numeric:tabular-nums}
+
+/* ---------- co w cenie ---------- */
+.wcenie{display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:30px;
+  border-top:1px solid var(--line); padding-top:24px}
+.wcenie ul{margin:12px 0 0; padding:0; list-style:none; display:grid; gap:9px}
+.wcenie li{display:grid; grid-template-columns:14px 1fr; gap:10px; font-size:14px; color:var(--ink-2)}
+.wcenie li::before{content:"—"; color:var(--brass)}
+@media (max-width:560px){ .wcenie{grid-template-columns:1fr; gap:20px} }
+
+/* ---------- poradnik ---------- */
+.rady{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:28px 40px}
+.rada{display:grid; grid-template-columns:32px 1fr; gap:16px; align-items:start}
+.rada b{font-family:var(--f-mono); font-size:11.5px; color:var(--brass);
+  border:1px solid var(--brass); border-radius:50%; width:32px; height:32px;
+  display:grid; place-items:center; font-weight:400}
+.rada h3{font-size:17.5px; margin-bottom:6px; line-height:1.25}
+.rada p{font-size:14.5px; color:var(--ink-2)}
+
+/* ---------- okazje ---------- */
+.occ2{display:grid; grid-template-columns:repeat(auto-fit,minmax(252px,1fr)); gap:26px 34px}
+.occ2 article{border-top:1px solid var(--line-2); padding-top:15px}
+.occ2 h3{font-size:18.5px; margin-bottom:7px}
+.occ2 p{font-size:14px; color:var(--ink-2)}
+
 /* ---------- proces ---------- */
 .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:26px}
 .step{border-top:2px solid var(--brass); padding-top:16px}
@@ -389,11 +425,11 @@ details p{padding:0 0 16px 28px; color:var(--ink-2); font-size:14.5px; max-width
     <nav class="nav">
       <a href="#o-mnie">O mnie</a>
       <a href="#katalog">Ścianki</a>
+      <a href="#wypozyczalnia">Wypożyczalnia</a>
       <a href="#realizacje">Realizacje</a>
       <a href="#konfigurator">Wycena</a>
-      <a href="#proces">Jak to działa</a>
       <a href="#okazje">Okazje</a>
-      <a href="#faq">Pytania</a>
+      <a href="#poradnik">Poradnik</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
     <a class="top__tel" href="tel:+48604734138">604 734 138</a>
@@ -447,6 +483,20 @@ details p{padding:0 0 16px 28px; color:var(--ink-2); font-size:14.5px; max-width
         <p>Każdą budujemy na aluminiowym stelażu z obciążnikami — stoi stabilnie także na trawie i w plenerze.</p>
       </div>
       <div class="cards" id="katalog-cards"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="wypozyczalnia">
+    <div class="wrap">
+      <div class="sec__head">
+        <div>
+          <p class="eyebrow">Wypożyczalnia</p>
+          <h2>Dodatki, które stawiamy<br>obok ścianki</h2>
+        </div>
+        <p>Można je wynająć razem ze ścianką albo osobno — do własnej dekoracji sali.</p>
+      </div>
+      <div class="rent" id="rent-lista"></div>
+      <p class="note">Ceny za dobę, przy wynajmie razem ze ścianką transport i montaż dodatków są w cenie ścianki.</p>
     </div>
   </section>
 
@@ -543,6 +593,27 @@ details p{padding:0 0 16px 28px; color:var(--ink-2); font-size:14.5px; max-width
             <div class="cta-row">
               <button class="btn" type="button" id="do-formularza">Przenieś wycenę do zapytania</button>
             </div>
+
+            <div class="wcenie">
+              <div>
+                <p class="eyebrow">Zawsze w cenie</p>
+                <ul>
+                  <li>Transport w promieniu 60 km od Rudy Śląskiej</li>
+                  <li>Montaż i demontaż wraz z obsługą stelaża</li>
+                  <li>Dobór kolorów i układu do motywu przyjęcia</li>
+                  <li>Obciążniki, kotwy i schowane okablowanie</li>
+                </ul>
+              </div>
+              <div>
+                <p class="eyebrow">Dopłata</p>
+                <ul>
+                  <li>Każdy kilometr powyżej 60 km — 2,50 zł</li>
+                  <li>Neon z personalizowanym napisem</li>
+                  <li>Obsługa przez cały czas trwania przyjęcia</li>
+                  <li>Druga doba wynajmu — 50% ceny</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </form>
       </div>
@@ -595,22 +666,99 @@ details p{padding:0 0 16px 28px; color:var(--ink-2); font-size:14.5px; max-width
         </div>
         <p>Nie ma na liście Twojej uroczystości? Zbudujemy ściankę pod konkretny motyw przewodni.</p>
       </div>
-      <ul class="occ">
-        <li>Wesela i śluby cywilne</li>
-        <li>Chrzciny</li>
-        <li>Komunie</li>
-        <li>Roczki i baby shower</li>
-        <li>Osiemnastki</li>
-        <li>Jubileusze i rocznice</li>
-        <li>Eventy firmowe</li>
+      <div class="occ2">
+        <article>
+          <h3>Wesele</h3>
+          <p>Ścianka za stołem pary młodej albo osobny kąt do zdjęć przy fotobudce. Najczęściej kwiatowa w kolorach bukietu lub pleksi z imionami i datą.</p>
+        </article>
+        <article>
+          <h3>Chrzciny i roczek</h3>
+          <p>Jasne, spokojne tło — lamele drewniane albo delikatne kwiaty. Imię dziecka na pleksi zostaje pamiątką po uroczystości.</p>
+        </article>
+        <article>
+          <h3>Komunia</h3>
+          <p>Biel i zieleń, bez przepychu. Ścianka staje tam, gdzie jest miejsce na zdjęcie z rodzicami, chrzestnymi i całą rodziną naraz.</p>
+        </article>
+        <article>
+          <h3>Osiemnastka</h3>
+          <p>Motyw pod zainteresowania solenizanta — sport, muzyka, ulubiona marka. Czerń, światła, neon z imieniem i świetlne cyfry obok.</p>
+        </article>
+        <article>
+          <h3>Event firmowy</h3>
+          <p>Wydruk z logo albo hasłem kampanii, ścianka do zdjęć dla gości i mediów. Format 3 × 2,5 m mieści w kadrze osiem osób.</p>
+        </article>
+        <article>
+          <h3>Jubileusz i rocznica</h3>
+          <p>Świetlne cyfry z liczbą lat, klasyczne kwiaty i miejsce na zdjęcia z dawnych lat obok ścianki.</p>
+        </article>
+      </div>
+      <ul class="occ" style="margin-top:34px">
+        <li>Baby shower</li>
+        <li>Studniówki i bale</li>
         <li>Konferencje i targi</li>
         <li>Sesje zdjęciowe</li>
-        <li>Bale i studniówki</li>
+        <li>Śluby cywilne w plenerze</li>
       </ul>
     </div>
   </section>
 
-  <section class="sec sec--alt" id="faq">
+  <section class="sec sec--alt" id="poradnik">
+    <div class="wrap">
+      <div class="sec__head">
+        <div>
+          <p class="eyebrow">Poradnik</p>
+          <h2>Jak dobrać ściankę<br>i gdzie ją ustawić</h2>
+        </div>
+        <p>Sześć rzeczy, które warto ustalić z salą, zanim zamówisz dekorację. W kolejności, w jakiej się o nich myśli.</p>
+      </div>
+      <div class="rady">
+        <div class="rada">
+          <b>1</b>
+          <div>
+            <h3>Zmierz miejsce, nie ściankę</h3>
+            <p>Format 2 × 2 m potrzebuje 2,6 m szerokości i 60 cm głębokości na stelaż z obciążnikami, a 3 × 2,5 m — 3,6 m. Do tego 2 m wolnej przestrzeni z przodu, żeby w kadrze zmieściło się sześć do ośmiu osób.</p>
+          </div>
+        </div>
+        <div class="rada">
+          <b>2</b>
+          <div>
+            <h3>Okno z boku, nigdy za plecami</h3>
+            <p>Światło padające z boku rzeźbi twarze. Ścianka ustawiona tyłem do okna daje ciemne sylwetki na tle jasnej plamy — tego nie naprawi już żaden filtr.</p>
+          </div>
+        </div>
+        <div class="rada">
+          <b>3</b>
+          <div>
+            <h3>Napis na wysokości oczu</h3>
+            <p>Środek imienia albo neonu umieszczamy 150–160 cm od podłogi. Wyżej zaczyna go zasłaniać głowa osoby stojącej w pierwszym rzędzie na zdjęciu grupowym.</p>
+          </div>
+        </div>
+        <div class="rada">
+          <b>4</b>
+          <div>
+            <h3>Sprawdź, co dzieje się obok</h3>
+            <p>Ścianka przy przejściu do toalet albo obok baru będzie przez cały wieczór zastawiona torebkami i krzesłami. Najlepszy jest róg sali z własnym punktem światła.</p>
+          </div>
+        </div>
+        <div class="rada">
+          <b>5</b>
+          <div>
+            <h3>W plenerze miej plan B</h3>
+            <p>Przy wietrze powyżej 40 km/h ścianka idzie pod zadaszenie. Ustal z salą zapasowe miejsce w dniu rezerwacji, a nie w dniu przyjęcia.</p>
+          </div>
+        </div>
+        <div class="rada">
+          <b>6</b>
+          <div>
+            <h3>Uprzedź fotografa</h3>
+            <p>Gdy wie o ściance, wpisuje zdjęcia grupowe w harmonogram — zwykle zaraz po torcie, kiedy wszyscy goście są jeszcze na sali.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
     <div class="wrap">
       <div class="sec__head">
         <div>
@@ -640,6 +788,22 @@ details p{padding:0 0 16px 28px; color:var(--ink-2); font-size:14.5px; max-width
           <p>Zaliczka 20% przy rezerwacji, reszta przelewem na 3 dni przed wydarzeniem lub gotówką przy montażu. Wystawiamy faktury — również dla firm organizujących eventy.</p>
         </details>
         <details>
+          <summary>Czy można wynająć ściankę na dwa dni?</summary>
+          <p>Tak — przy weselu z poprawinami albo dwudniowym evencie druga doba kosztuje 50% ceny wynajmu. Ścianka zostaje na miejscu, demontujemy ją dopiero po wszystkim.</p>
+        </details>
+        <details>
+          <summary>Co się dzieje, kiedy pada deszcz?</summary>
+          <p>Przy ustawieniu w plenerze przenosimy ściankę pod zadaszenie albo do sali — dlatego prosimy o wskazanie zapasowego miejsca już przy rezerwacji. Decyzję podejmujemy najpóźniej dwie godziny przed przyjęciem, razem z Wami.</p>
+        </details>
+        <details>
+          <summary>Czy ścianka jest bezpieczna przy dzieciach?</summary>
+          <p>Stelaż stoi na obciążnikach, nie ma ostrych krawędzi, a okablowanie oświetlenia jest schowane i zabezpieczone przy podłodze. Przy chrzcinach i roczkach ustawiamy ją dodatkowo z dala od przejść.</p>
+        </details>
+        <details>
+          <summary>Czy mogę połączyć ściankę z własnymi dekoracjami?</summary>
+          <p>Tak, często tak robimy — dostawiamy naszą ściankę do kwiatów od florysty albo do dekoracji sali. Wystarczy, że wcześniej powiesz, co już masz, żebyśmy dobrali kolory i nie powielali tych samych elementów.</p>
+        </details>
+        <details>
           <summary>Czy ściankę można kupić na własność?</summary>
           <p>Tak, budujemy ścianki na zamówienie — najczęściej dla sal weselnych, fotobudek i firm z własnym brandingiem. Wycena zależy od konstrukcji i materiału; termin realizacji to zwykle 3–4 tygodnie.</p>
         </details>
@@ -647,7 +811,7 @@ details p{padding:0 0 16px 28px; color:var(--ink-2); font-size:14.5px; max-width
     </div>
   </section>
 
-  <section class="sec" id="kontakt">
+  <section class="sec sec--alt" id="kontakt">
     <div class="wrap">
       <div class="sec__head">
         <div>
@@ -713,7 +877,7 @@ details p{padding:0 0 16px 28px; color:var(--ink-2); font-size:14.5px; max-width
     <span class="foot__znak" id="znak-stopka"></span>
     <span>Dekoracje · Wypożyczalnia · Aranżacje<br>
       <a href="tel:+48604734138">604 734 138</a> · <a href="mailto:MWaranzeria@gmail.com">MWaranzeria@gmail.com</a></span>
-    <span><a href="#gora">Na górę</a> · <a href="#realizacje">Realizacje</a> · <a href="#konfigurator">Wycena</a> · <a href="#kontakt">Kontakt</a></span>
+    <span><a href="#gora">Na górę</a> · <a href="#katalog">Ścianki</a> · <a href="#wypozyczalnia">Wypożyczalnia</a> · <a href="#poradnik">Poradnik</a> · <a href="#kontakt">Kontakt</a></span>
   </div>
 </footer>
 
@@ -886,6 +1050,71 @@ function rysuj(o){
       <text x="${VB/2}" y="${y1+60}" text-anchor="middle">${s.cm}</text></g>` : ""}
   </svg>`;
 }
+
+/* ---------- wypożyczalnia dodatków (ceny do edycji w jednym miejscu) ---------- */
+const WYNAJEM = [
+  {ikona:"cyfry", nazwa:"Świetlne cyfry i litery", cena:120, jedn:"za znak",
+   spec:"wysokość 80 cm · żarówki LED · cyfry 0–9 i litery",
+   opis:"Stoją na podłodze obok ścianki. Najczęściej wiek solenizanta albo inicjały pary młodej."},
+  {ikona:"kwiat", nazwa:"Kwiaty papierowe 3D", cena:35, jedn:"za sztukę",
+   spec:"średnica 40–70 cm · stojak lub zawieszenie",
+   opis:"Duże kwiaty na smukłych stojakach. Dobrze wypełniają puste boki ścianki i rogi sali."},
+  {ikona:"balony", nazwa:"Girlanda balonowa", cena:250, jedn:"za 3 m",
+   spec:"długość 2–5 m · kolory dobierane do motywu",
+   opis:"Plecona na miejscu, wzdłuż krawędzi ścianki albo nad wejściem na salę."},
+  {ikona:"neon", nazwa:"Neon LED", cena:250, jedn:"gotowy wzór",
+   spec:"napisy gotowe od ręki · personalizowane 7–10 dni",
+   opis:"Gotowe hasła albo napis z imionami. Świeci ciepłym białym lub różowym światłem."},
+  {ikona:"podest", nazwa:"Podest i dywan", cena:180, jedn:"komplet",
+   spec:"podest 300 × 100 cm · dywan do 3 m",
+   opis:"Wyrównuje nierówną podłogę i wyznacza miejsce do zdjęć. Przydaje się w plenerze."},
+  {ikona:"tablica", nazwa:"Tablica powitalna", cena:90, jedn:"za sztukę",
+   spec:"format A1 w ramie · wydruk w cenie",
+   opis:"Staje przy wejściu — powitanie gości, plan wieczoru albo plan stołów."}
+];
+function ikona(t){
+  const o = `stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"`;
+  const b = (x,y)=>`<circle cx="${x}" cy="${y}" r="1.7" fill="currentColor" stroke="none"/>`;
+  let s = "";
+  if(t==="cyfry"){
+    s = `<rect x="8" y="12" width="17" height="40" rx="2" ${o}/><rect x="31" y="12" width="25" height="40" rx="2" ${o}/>
+      <line x1="31" y1="32" x2="56" y2="32" ${o}/>`;
+    [16.5].forEach(x=>{ for(let y=17;y<=47;y+=7.5) s += b(x,y) });
+    for(let x=37;x<=50;x+=6.5){ s += b(x,17) + b(x,32) + b(x,47) }
+  }
+  if(t==="kwiat"){
+    for(let i=0;i<8;i++){ const a=i*Math.PI/4;
+      s += `<ellipse cx="${(32+Math.cos(a)*11).toFixed(1)}" cy="${(26+Math.sin(a)*11).toFixed(1)}" rx="8" ry="4.6"
+        transform="rotate(${(a*180/Math.PI).toFixed(0)} ${(32+Math.cos(a)*11).toFixed(1)} ${(26+Math.sin(a)*11).toFixed(1)})" ${o}/>`; }
+    s += `<circle cx="32" cy="26" r="4" ${o}/><line x1="32" y1="41" x2="32" y2="56" ${o}/><path d="M24,56 h16" ${o}/>`;
+  }
+  if(t==="balony"){
+    s = `<path d="M6,46 C16,18 48,18 58,46" ${o}/>`;
+    [[12,40,6],[23,27,8],[36,25,9],[48,33,7],[56,44,5.5]].forEach(([x,y,r])=>{
+      s += `<circle cx="${x}" cy="${y}" r="${r}" ${o}/>`; });
+  }
+  if(t==="neon"){
+    s = `<path d="M10,40 C14,20 22,20 24,34 C26,48 32,48 34,34 C36,20 44,20 48,32 C50,38 54,38 56,32" ${o}/>
+      <path d="M10,48 h44" stroke="currentColor" stroke-width="1" opacity=".45"/>`;
+  }
+  if(t==="podest"){
+    s = `<path d="M6,42 h52 l-8,10 h-36 Z" ${o}/><path d="M14,42 v-6 h36 v6" ${o}/>
+      <path d="M22,36 h20" ${o}/>`;
+  }
+  if(t==="tablica"){
+    s = `<rect x="14" y="8" width="36" height="30" rx="2" ${o}/><path d="M20,16 h24 M20,23 h24 M20,30 h14" ${o}/>
+      <path d="M32,38 v10 M22,56 l10,-8 l10,8" ${o}/>`;
+  }
+  return `<svg class="rent__ico" viewBox="0 0 64 64" aria-hidden="true">${s}</svg>`;
+}
+document.getElementById("rent-lista").innerHTML = WYNAJEM.map(w=>
+  `<article class="rent__it">
+    ${ikona(w.ikona)}
+    <h3>${w.nazwa}</h3>
+    <p class="rent__spec">${w.spec}</p>
+    <p>${w.opis}</p>
+    <div class="rent__cena"><span>${w.jedn}</span><b>od ${zl(w.cena)}</b></div>
+  </article>`).join("");
 
 /* ---------- katalog ---------- */
 const katalog = document.getElementById("katalog-cards");
